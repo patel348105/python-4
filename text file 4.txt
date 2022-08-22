@@ -1,0 +1,313 @@
+ex:1 # What is File function in python? What is keywords to create and write file.
+ans:
+    The file function is used to "create", "modify","read" and "find" the external files using python.
+"open" keyword is functioning for create and write files with "w" attribute.
+################################################################################################################################################################
+ex:2 # Write a Python program to read an entire text file. 
+
+f=open('myfile.txt','r')
+l=f.readlines()
+
+for i in l:
+    print(i)
+f.close()
+
+################################################################################################################################################################
+ex:3 #Write a Python program to append text to a file and display the text. 
+f=open('myfile.txt','a')
+f.write('\n Python  is easiest coding.')
+f=open('myfile.txt','r')
+l=f.readlines()
+
+for i in l:
+    print(i)
+f.close()
+################################################################################################################################################################
+ex:4# Write a Python program to read first n lines of a file.
+
+f=open('myfile.txt','r')
+l=f.readlines()
+for i in range(2):
+    print(l[i],end='')
+f.close()
+################################################################################################################################################################
+ex:5 # Write a Python program to read last n lines of a file.
+
+f=open('myfile.txt','r')
+l=f.readlines()
+
+for i in range(-3,0):
+    print(l[i],end='')
+f.close()
+################################################################################################################################################################
+ex:6 # Write a Python program to read a file line by line and store it into a list.
+
+f=open('myfile.txt','r')
+l=list()
+
+for i in f:
+    l.append(i)
+print(l)    
+f.close()
+################################################################################################################################################################
+ex:7 # Write a Python program to read a file line by line store it into a variable.
+f=open('myfile.txt','r')
+a=""
+l=list()
+
+for i in f:
+    l.append(i)
+print("a=\n",l)    
+f.close()
+################################################################################################################################################################
+ex:8 # Write a python program to find the longest words.
+f=open('myfile.txt','r')
+longestword=""
+l=list()
+
+for i in f:
+    a=i.split()
+    for x in a:
+        if len(x)>len(longestword):
+            longestword=x
+print(f'"{longestword}"lenght:', len(longestword))    
+f.close()
+################################################################################################################################################################
+ex:9 #Write a Python program to count the number of lines in a text file. 
+f=open('myfile.txt','r')
+a=""
+l=list()
+
+for i in f:
+    l.append(i)
+print(f'number of line',len(l))    
+f.close()
+################################################################################################################################################################
+ex:10 # Write a Python program to count the frequency of words in a file. 
+f=open('myfile.txt','r')
+long=""
+l=list()
+
+for i in f:
+    a = i.split()
+    for x in a :
+        if len(x) > len(long):
+            long = x
+print(f'"{long}" with lenght of :',len(long))
+        
+f.close()
+################################################################################################################################################################
+ex:11 #Write a Python program to write a list to a file.
+    
+l = ['red,pink,white,black,green']
+f=open('myfile.txt','r')
+for i in l:
+    f.write('\n'+i)
+f.close()
+################################################################################################################################################################
+
+ex:12 #Write a Python program to copy the contents of a file to another file.
+    
+f1 = open("text.txt","r")
+x = f1.readlines()
+f2 = open("copy.txt","w")
+for i in range(-5,0):
+    f2.write(x[i])
+f1.close()
+f2.close()
+################################################################################################################################################################
+ex:13 #Explain Exception handling? What is an Error in Python? 
+    
+Exceptions: Exceptions are raised when the program is syntactically correct, but the code resulted in an error.
+    This error does not stop the execution of the program, however, it changes the normal flow of the program.
+example:
+    
+try:
+      print(x)
+except TypeError:
+      print("x is not defined")
+except:
+      print("Error")
+        
+output:As the except is executed, we can see the output as “Error”. 
+################################################################################################################################################################
+ex:14 #How many except statements can a try-except block have? Name Some built-in exception classes: 
+    First, the try clause is executed i.e. the code between try and except clause.
+If there is no exception, then only the try clause will run, except the clause is finished.
+If any exception occurs, the try clause will be skipped and except clause will run.
+If any exception occurs, but the except clause within the code doesn’t handle it, it is passed on to the outer try statements.
+If the exception is left unhandled, then the execution stops.
+A try statement can have more than one except clause.
+
+################################################################################################################################################################
+ex:15 #When will the else part of try-except-else be executed?
+    An Exception is an Event, which occurs during the execution of the program. It is also known as a run time error.
+When that error occurs, Python generates an exception during the execution and that can be handled, which avoids 
+your program to interrupt.
+
+Example:
+
+a = 5
+b = 0
+print(a/b)
+
+Output:
+Traceback (most recent call last):
+File "/home/8a10be6ca075391a8b174e0987a3e7f5.py", line 3, in <module>
+    print(a/b)
+ZeroDivisionError: division by zero
+
+################################################################################################################################################################
+ex:16 #Can one block of except statements handle multiple exception? 
+Given a piece of code that can throw any of several different exceptions, and one needs to account
+for all of the potential exceptions that could be raised without creating duplicate code or long, meandering code passages.
+If you can handle different exceptions all using a single block of code, they can be grouped 
+together in a tuple as shown in the code given below :
+
+Code #1 :
+
+try:
+    client_obj.get_url(url)
+except (URLError, ValueError, SocketTimeout):
+    client_obj.remove_url(url)
+The remove_url() method will be called if any of the listed exceptions occurs.
+If, on the other hand, if one of the exceptions has to be handled differently, then put it into 
+its own except clause as shown in the code given below :
+################################################################################################################################################################
+ex:17 #When is the finally block executed?
+    finally block is always executed after leaving the try statement. In case if some exception 
+    was not handled by except block, it is re-raised after execution of finally block.
+finally block is used to deallocate the system resources.
+One can use finally just after try without using except block, but no exception is handled in that case.
+################################################################################################################################################################
+ex:18 #What happens when „1‟== 1 is executed? 
+I'm testing the tuple structure, and I found it's strange when I use the == operator like:
+
+example:
+>>>  (1,) == 1,
+Out: (False,)
+When I assign these two expressions to a variable, the result is true:
+
+>>> a = (1,)
+>>> b = 1,
+>>> a==b
+Out: True
+This questions is different from Python tuple trailing comma syntax rule in my view. 
+I ask the group of expressions between == operator.
+################################################################################################################################################################
+ex:19 #How Do You Handle Exceptions With Try/Except/Finally In Python? Explain with coding snippets.
+    An exception simply is an error that occurs during the execution of a program.
+When the Python program encounters a situation that disrupts the flow of the program, it raises an
+exception that can be handled.
+If not handled properly, the interpreter throws a traceback error along with the statements that
+caused that error. These exceptions prevent the program from crashing.
+Exceptions are handled in Python using try statement where suspicious codes that may raise exceptions are placed inside the try block and the code that handle the raised exception is placed inside except block.
+
+Here is the structure of try and except statement in Python.
+
+try:
+  ** Operational/Suspicious Code
+except SomeException:
+  ** Code to handle the exception.
+
+################################################################################################################################################################
+ex:20# Write python program that user to enter only odd numbers, else will raise an exception. 
+    
+start,end=4,19
+for num in range(start, end + 1):
+
+    if num % 2 != 0:
+        print(num, end=" ")
+################################################################################################################################################################
+ex:21#What are oops concepts? Is multiple inheritance supported in java
+ans:-we will learn about the basics of OOPs. Object-Oriented Programming is a paradigm that provides many concepts, 
+such as inheritance, data binding, polymorphism, etc.
+Simula is considered the first object-oriented programming language. 
+The programming paradigm where everything is represented as an object is known as a truly object-oriented programming language.
+Smalltalk is considered the first truly object-oriented programming language.
+The popular object-oriented languages are Java, C#, PHP, Python, C++, etc.
+The main aim of object-oriented programming is to implement real-world entities, for example, object,
+classes, abstraction, inheritance, polymorphism, etc.
+################################################################################################################################################################
+ex:22#How to Define a Class in Python? What Is Self? Give An Example Of A Python Class.
+ans: elf represents the instance of the class. By using the “self”  we can access the attributes and methods
+of the class in python. It binds the attributes with the given arguments.
+The reason you need to use self. is because Python does not use the @ syntax to refer to instance attributes. 
+Python decided to do methods in a way that makes the instance to which the method belongs be passed automatically, 
+but not received automatically: the first parameter of methods is the instance the method is called on.
+example:
+#it is clearly seen that self and obj is referring to the same object
+ class check:
+    def __init__(self):
+        print("Address of self = ",id(self))
+obj = check()
+print("Address of class object = ",id(obj))
+ 
+# this code is Contributed by Samyak Jain
+Output:
+Address of self =  140124194801032
+Address of class object =  140124194801032
+################################################################################################################################################################
+ex:23#Write a Python class named Rectangle constructed by a length and width and a method which will compute 
+#the area of a rectangle.
+
+class Rectangle():
+    def __init__(self, l, w):
+        self.length = l
+        self.width  = w
+
+    def rectangle_area(self):
+        return self.length*self.width
+
+newRectangle = Rectangle(10, 5)
+print(newRectangle.rectangle_area())
+################################################################################################################################################################
+ex:24# Write a Python class named Circle constructed by a radius and two methods which will compute the area 
+#and the perimeter of a circle.
+
+class Circle():
+    def __init__(self, r):
+        self.radius = r
+
+    def area(self):
+        return self.radius**2*3.14
+    
+    def perimeter(self):
+        return 2*self.radius*3.14
+
+a = Circle(8)
+print(a.area())
+print(a.perimeter())
+################################################################################################################################################################
+ex:25#Explain Inheritance in Python with an example? What is init? Or What Is A Constructor In Python? 
+
+    
+class Person(object):
+   
+  # Constructor
+    def __init__(self, name, id):
+        self.name = name
+        self.id = id
+ 
+  # To check if this person is an employee
+    def Display(self):
+        print(self.name, self.id)
+ 
+ 
+# Driver code
+emp = Person("Satyam", 102) # An Object of Person
+emp.Display()
+
+
+#Inheritance is the capability of one class to derive or inherit the properties from another class. 
+Python Inheritance Syntax
+Class BaseClass:
+    {Body}
+Class DerivedClass(BaseClass):
+    {Body}
+################################################################################################################################################################
+ex:26#What is Instantiation in terms of OOP terminology?
+ans:In computer science, instantiation is the realization of a predefined object. 
+In OOP (object-oriented programming), a class of object may be defined. ... An instance of
+that object may then be declared, giving it a unique, named identity so that it may be used in the program.
+This process is called "instantiation."
